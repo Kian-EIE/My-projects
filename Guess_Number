@@ -1,0 +1,116 @@
+#include <stdio.h>
+#include <stdlib.h>
+#include <time.h>
+#include <ctype.h>
+
+int main()
+{
+	int attempts, magic, guess_input;
+	char answer;
+
+	srand(time(NULL)); // 使用当前时间作为随机数生成器的种子
+
+	while (1) {
+		attempts = 7;
+		magic = rand() % 101;
+
+		while (1) {
+			printf("请输入0到100之间的整数，你还有%d次机会\n", attempts);
+			scanf("%d", &guess_input);
+			if (guess_input == magic) {
+				printf("Bingo!\n\n");
+				break;
+			}
+
+			if (guess_input < magic)
+				printf("小了\n\n");
+			else
+				printf("大了\n\n");
+
+			--attempts;
+			if (attempts == 0) {
+				printf("game over. 正确数字为%d\n\n", magic);
+				break;
+			}
+		}
+
+		printf("是否开启新游戏(Y/N): ");
+		while (getchar() != '\n')
+			;  // 吃掉字符缓冲区中的剩余字符
+		scanf("%c", &answer);
+		if (toupper(answer) != 'Y')
+			break;
+	}
+
+	return 0;
+}
+
+
+
+//#include <stdio.h>
+//#include <stdlib.h>
+//#include <time.h>
+//
+//int main()
+//{
+//	int attempts = 7, magic, guess_input;
+//
+//	srand(time(NULL)); // 使用当前时间作为随机数生成器的种子
+//	magic = rand() % 101;
+//
+//	for (; attempts > 0; --attempts) {
+//		printf("请输入0到100之间的整数，你还有%d次机会\n", attempts);
+//		scanf("%d", &guess_input);
+//		if (guess_input == magic) {
+//			printf("Bingo!\n");
+//			break;
+//		}
+//
+//		if (guess_input < magic)
+//			printf("小了\n\n");
+//		else
+//			printf("大了\n\n");
+//	}
+//
+//	if (guess_input != magic)
+//		printf("game over. 正确数字为%d\n", magic);
+//
+//	getchar();
+//	return 0;
+//}
+
+
+
+//#include <stdio.h>
+//#include <stdlib.h>
+//#include <time.h>
+//
+//int main()
+//{
+//	int attempts = 7, magic, guess_input;
+//
+//	srand(time(NULL)); // 使用当前时间作为随机数生成器的种子
+//	magic = rand() % 101;
+//
+//	while (1) {
+//		printf("请输入0到100之间的整数，你还有%d次机会\n", attempts);
+//		scanf("%d", &guess_input);
+//		if (guess_input == magic) {
+//			printf("Bingo!\n");
+//			break;
+//		}
+//
+//		if (guess_input < magic)
+//			printf("小了\n\n");
+//		else
+//			printf("大了\n\n");
+//
+//		--attempts;
+//		if (attempts == 0) {
+//			printf("game over. 正确数字为%d\n", magic);
+//			break;
+//		}
+//	}
+//
+//	return 0;
+//}
